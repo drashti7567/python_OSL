@@ -108,7 +108,18 @@ class App:
  
     def on_event(self, event):
         if event.type == pygame.QUIT:
-            self._running = False
+            on_kill(self,event)
+ 
+    def on_kill(self,event):
+        self._running = True;
+        elf._display_surf = None
+        self._image_surf = None
+        self._apple_surf = None
+        self.game = Game()
+        self.player = Player(3) 
+        self.apple = Apple(5,5)
+        on_init(self)
+            
  
     def on_loop(self):
         self.player.update()
